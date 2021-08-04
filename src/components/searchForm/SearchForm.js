@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { onSearchFilter } from "../../redux/contacts/contacts-actions";
+import { onSearchFilter, getFilter } from "../../redux/contacts";
+// import { onSearchFilter } from "../../redux/contacts/contacts-actions";
+// import { getFilter } from "../../redux/contacts/contacts-selectors";
 
 const SearchForm = ({ onSearchHandler, filter }) => {
   return (
@@ -19,7 +21,7 @@ const SearchForm = ({ onSearchHandler, filter }) => {
 };
 
 const mapStateToProps = (state) => ({
-  filter: state.contacts.filter,
+  filter: getFilter(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

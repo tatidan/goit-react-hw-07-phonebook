@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { removeContact } from "../../redux/contacts/contacts-operations";
 
 const ContactsList = ({ contacts, removeContact }) => {
   return (
@@ -22,20 +20,4 @@ const ContactsList = ({ contacts, removeContact }) => {
   );
 };
 
-const onFilterRender = (allContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return allContacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter)
-  );
-};
-
-const mapStateToProps = ({ contacts: { contacts, filter } }) => ({
-  contacts: onFilterRender(contacts, filter),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  removeContact: (id) => dispatch(removeContact(id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactsList);
+export default ContactsList;

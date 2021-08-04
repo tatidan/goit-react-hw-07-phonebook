@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-// import { PersistGate } from "redux-persist/es/integration/react";
 import store from "./redux/contacts/store";
-// import { persistor } from "./redux/contacts/store";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
+// import { PersistGate } from "redux-persist/es/integration/react";
+// import { persistor } from "./redux/contacts/store";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import ContactsForm from "./components/contactsForm/ContactsForm";
-import ContactsList from "./components/contacts/ContactsList";
-import SearchForm from "./components/searchForm/SearchForm";
-import Section from "./components/section/Section";
-import "./index.css";
 import { connect } from "react-redux";
-import { fetchContacts } from "./redux/contacts/contacts-operations";
+import ContactsForm from "./components/contactsForm/ContactsForm";
+import SearchForm from "./components/searchForm/SearchForm";
+import ContactsListContainer from "./components/contacts/ContactsListContainer";
+import Section from "./components/section/Section";
+import { fetchContacts, getLoading } from "./redux/contacts";
+import "./index.css";
+// import { fetchContacts } from "./redux/contacts/contacts-operations";
+// import { getLoading } from "./redux/contacts/contacts-selectors";
 
 class App extends Component {
   componentDidMount() {
@@ -21,7 +23,7 @@ class App extends Component {
         <Section title="Contacts">
           <SearchForm />
           {this.props.isLoadingContacts && <h2>Loading contacts...</h2>}
-          <ContactsList />
+          <ContactsListContainer />
         </Section>
       </>
     );
@@ -29,7 +31,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isLoadingContacts: state.contacts.loading,
+  isLoadingContacts: getLoading(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

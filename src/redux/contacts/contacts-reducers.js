@@ -40,6 +40,11 @@ const filter = createReducer("", {
   [onSearchFilter]: (_, action) => action.payload,
 });
 
-const error = createReducer(null, {});
+// const error = createReducer(null, {});
 
-export default combineReducers({ contacts, filter, loading, error });
+export default combineReducers({
+  contacts,
+  filter,
+  loading,
+  // error
+});

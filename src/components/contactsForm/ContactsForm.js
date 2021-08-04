@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-// import shortid from "shortid";
 import { connect } from "react-redux";
-import { addNewContact } from "../../redux/contacts/contacts-operations";
+import { addNewContact, getContacts } from "../../redux/contacts";
+// import { addNewContact } from "../../redux/contacts/contacts-operations";
+// import { getContacts } from "../../redux/contacts/contacts-selectors";
 
 class ContactsForm extends Component {
   state = {
@@ -20,9 +21,7 @@ class ContactsForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.contacts.contacts.find(
-      (contact) => contact.name === this.state.name
-    )
+    this.props.contacts.find((contact) => contact.name === this.state.name)
       ? alert(`Contact with the name ${this.state.name} already exists.`)
       : this.props.addNewContact({ ...this.state });
 
@@ -72,7 +71,7 @@ class ContactsForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts,
+  contacts: getContacts(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
