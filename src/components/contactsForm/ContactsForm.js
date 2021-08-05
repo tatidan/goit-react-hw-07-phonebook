@@ -21,7 +21,9 @@ class ContactsForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.contacts.find((contact) => contact.name === this.state.name)
+    this.props.contacts.find(
+      (contact) => contact.name.toLowerCase() === this.state.name.toLowerCase()
+    )
       ? alert(`Contact with the name ${this.state.name} already exists.`)
       : this.props.addNewContact({ ...this.state });
 

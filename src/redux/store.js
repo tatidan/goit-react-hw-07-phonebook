@@ -9,7 +9,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import logger from "redux-logger";
-import contactsReducer from "../contacts/contacts-reducers";
+import contactsReducer from "./contacts/contacts-reducers";
 
 const middleware = [
   ...getDefaultMiddleware({
